@@ -1,5 +1,3 @@
-/*
-  * in the user manual at https://docs.gradle.org/6.6.1/userguide/multi_project_builds.html
- */
-rootProject.name = 'otus-Java-2020-09-Biglov'
+rootProject.name = 'eton_ot_ja_20_09_cl'
 include 'hw-gradle'
+include 'hw3-collections'
