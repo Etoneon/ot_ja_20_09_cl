@@ -59,7 +59,7 @@ public class App {
         List<Cat> cats = new DIYArrayList<>();
         List<Animal> anims = new DIYArrayList<>();
         anims.add(new Animal("Elephant"));
-        int length = chooseNumber("Enter array size",100);
+        int length = chooseNumber("Enter array size",100000);
         Cat[] catArr=new Cat[length];
         for (int i = 0; i < length; i++) {
             String name="cat"+(i+1);
@@ -79,7 +79,7 @@ public class App {
     public static void checkCopy(){
         List<Cat> cats = new DIYArrayList<>();
         List<Animal> anims = new DIYArrayList<>();
-        int size = chooseNumber("Enter array size",100);
+        int size = chooseNumber("Enter array size",1000);
 
         for (int i = 0; i < size; i++) {
             anims.add(new Animal("Elephant"));
@@ -111,7 +111,7 @@ public class App {
         List<Cat> cats1 = new DIYArrayList<>();
         List<Cat> cats2 = new DIYArrayList<>();
         List<Animal> anims = new DIYArrayList<>();
-        int size = chooseNumber("Enter array size",100);
+        int size = chooseNumber("Enter array size",1000);
         Cat cat= new Cat("cat");
         double tone;
 
