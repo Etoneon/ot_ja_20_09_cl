@@ -17,7 +17,7 @@ idea {
 }
 
 allprojects {
-    group "otus-Java-2020-09-Biglov"
+    group "eton_ot_ja_20_09_cl"
 
     repositories {
         mavenCentral()
