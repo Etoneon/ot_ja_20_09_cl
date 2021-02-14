@@ -1,4 +1,5 @@
 rootProject.name = 'eton_ot_ja_20210106_09_cl'
+include 'hw16_serialization'
 include 'hw06_reflections'
 include 'hw-gradle'
 include 'hw3-collections'
