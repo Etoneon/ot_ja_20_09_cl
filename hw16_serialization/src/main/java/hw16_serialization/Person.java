@@ -38,7 +38,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person [name=" + name + ", age=" + age + ", isBig=" + isBig + ", legs=" + Arrays.toString(legs)
-                + ", friends=" + friends + ", toys=" + toys + ", food=" + toys + ", weight" + weight
+                + ", friends=" + friends + ", toys=" + toys + ", food=" + food + ", weight" + weight
                 + ", owner=" + owner.getName()
                 + ", date=" + creationalDate + "]";
 

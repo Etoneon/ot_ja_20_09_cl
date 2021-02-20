@@ -1,38 +1,49 @@
-
 package hw16_serialization;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 public class MyGsonDemo {
 
-    public static void main(String[] args) {
-        ArrayList<String> friends = new ArrayList<>();
-        Map<String, Integer> toys = new HashMap<>();
-        Person personSharic = new Person("Sharic", 5, friends, toys, true, new Owner("Piotr", 33));
-        personSharic.friends.add("Bobic");
-        personSharic.friends.add("Tuzic");
-        personSharic.toys.put("ball", 2);
-        personSharic.toys.put("bone", 3);
-        System.out.println(personSharic);
-        MyGson serializator = new MyGson();
-        String sSharic = serializator.toJson(personSharic);
-        System.out.println(sSharic);
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException {
+
+        int value1 = 42;
+        float value2 = 3.14f;
+        String value3 = "value3";
+        int[] valueArray = {9, 14, 19};
+        ArrayList<Double> valueArrList = new ArrayList<>(List.of(3.14, 2.71, 1.41));
+        Set<String> valueSet = new HashSet<>();
+        Map<String, Double> valueMap = new HashMap<>();
+
+        valueSet.add("valueSet1");
+        valueSet.add("valueSet2");
+        valueMap.put("valueMap1", 1.1);
+        valueMap.put("valueMap2", 2.2);
+        valueMap.put("valueMap3", 3.3);
+
+        AniObject anyObject =  new AniObject(value1, value2, true, value3,
+        valueArray, valueArrList, valueSet, valueMap);
+
+        System.out.println(anyObject);
+        MyGson myGson = new MyGson();
+        String serAniObject = myGson.toJson(anyObject);
+        System.out.println("\nmyGsoned AniObject:\n" + serAniObject +"\n");
+
+//        System.out.println("\nmyMyGsoned AniObject:\n" + myGson.toMyJson(anyObject) +"\n");
+
         Gson gson = new Gson();
-        Person reSharic = gson.fromJson(sSharic, Person.class);
-        reSharic.setCreationalDate();
-        System.out.println(reSharic);
-        //System.out.println(gson.toJson(null));
-        //System.out.println(gson.toJson(123));
-        //System.out.println(gson.toJson("abc"));
-        System.out.println(gson.toJson(true));
-        System.out.println(new MyGson().toJson(null));
-        System.out.println(new MyGson().toJson(123));
-        System.out.println(new MyGson().toJson("abc"));
-        System.out.println(new MyGson().toJson(true));
+        System.out.println("gSoned AniObject:\n" + gson.toJson(anyObject) +"\n");
+
+        AniObject reAniObject = gson.fromJson(serAniObject, AniObject.class);
+        reAniObject.setDate();
+        System.out.println("reGsoned MyGsoned AniObject:\n" + reAniObject + "\n");
+
+        System.out.println("equals? "+ anyObject.equals(reAniObject)+ "\n");
+
+        System.out.println("reGsoned MyGsoned null: " + gson.fromJson(new MyGson().toJson(null),AniObject.class));
+        System.out.println("MyGsoned null: " + new MyGson().toJson(null));
 
     }
 }
