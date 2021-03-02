@@ -35,10 +35,7 @@ public class DataSourceDemo implements DataSource {
     }
 
     @Override
-    public void setLogWriter(PrintWriter out) {
-        throw new UnsupportedOperationException();
-
-    }
+    public void setLogWriter(PrintWriter out) {throw new UnsupportedOperationException(); }
 
     @Override
     public int getLoginTimeout() {
