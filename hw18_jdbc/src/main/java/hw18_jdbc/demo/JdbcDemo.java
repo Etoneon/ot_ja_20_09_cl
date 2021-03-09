@@ -15,7 +15,7 @@ import java.sql.Savepoint;
 // этот класс не должен быть в домашней работе
 public class JdbcDemo {
     private static final Logger logger = LoggerFactory.getLogger(JdbcDemo.class);
-
+/*
     public static void main(String[] args) throws SQLException {
         var dataSource = new DataSourceDemo();
         flywayMigrations(dataSource);
@@ -26,7 +26,7 @@ public class JdbcDemo {
             demo.selectRecord(connection, id);
         }
     }
-
+*/
     private static Connection getConnection(DataSource dataSource) throws SQLException {
         var connection = dataSource.getConnection();
         connection.setAutoCommit(false);
