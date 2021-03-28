@@ -67,7 +67,7 @@ import java.util.stream.IntStream;
         logger.info("getValue:{}", cache.get(1));
         cache.remove(1);
         cache.removeListener(listener);
-        logger.info("Notifiers size after removal is {}", cache.sizeNotifiers());
+        logger.info("List of listeners size after removal is {}", cache.sizeListenersList());
     }
 
     private void demo2() throws InterruptedException {
@@ -123,21 +123,25 @@ import java.util.stream.IntStream;
         Thread.sleep(100L);
         logger.info("cache size immediately after GC is {}", cacheDB.size());
 
-        logger.info("Notifiers size is {}", cacheDB.sizeNotifiers());
+        logger.info("Notifiers size is {}", cacheDB.sizeListenersList());
+        // checking if listenerDB works
         cacheDB.put(1000L, new Client(1000L, "Client A",50));
 
         listenerDB = null;
-        cacheDB.put(500L, new Client(500L, "Client B",30));
+        // checking if listenerDB works immediately after nulling of main reference
+        cacheDB.put(500L, new Client(500L, "Client after nulling",30));
+
         System.gc();
         Thread.sleep(100L);
-        cacheDB.put(700L, new Client(700L, "Client C",40));
-        logger.info("Notifiers size after null+ GC is {}", cacheDB.sizeNotifiers());
+        // // checking if listenerDB works after GC
+        cacheDB.put(700L, new Client(700L, "Client after GC",40));
+        logger.info("List of listeners size after null+ GC is {}", cacheDB.sizeListenersList());
 
         cacheDB.removeListener(listenerCount);
-        logger.info("Notifiers size after one removal is {}", cacheDB.sizeNotifiers());
+        logger.info("List of listeners size after one removal is {}", cacheDB.sizeListenersList());
 
         cacheDB.removeListener(listenerDB);
-        logger.info("Notifiers size after null removal is {}", cacheDB.sizeNotifiers());
+        logger.info("List of listeners size after null removal is {}", cacheDB.sizeListenersList());
 
     }
 

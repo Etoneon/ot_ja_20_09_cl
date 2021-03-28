@@ -20,5 +20,5 @@ public interface HwCache<K, V> {
 
     int size();
 
-    int sizeNotifiers();
+    int sizeListenersList();
 }
