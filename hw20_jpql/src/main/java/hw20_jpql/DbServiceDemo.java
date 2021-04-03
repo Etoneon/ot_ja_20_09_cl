@@ -34,7 +34,7 @@ public class DbServiceDemo {
         String dbUserName = configuration.getProperty("hibernate.connection.username");
         String dbPassword = configuration.getProperty("hibernate.connection.password");
 
-        new MigrationsExecutorFlyway(dbUrl, dbUserName, dbPassword).executeMigrations();
+//        new MigrationsExecutorFlyway(dbUrl, dbUserName, dbPassword).executeMigrations();
 
         // Все главное см в тестах
         SessionFactory sessionFactory = HibernateUtils.buildSessionFactory(configuration,

@@ -2,7 +2,11 @@ package hw16_serialization;
 
 import com.google.gson.Gson;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Parameter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class MyGsonDemo {
@@ -31,7 +35,7 @@ public class MyGsonDemo {
         String serAniObject = myGson.toJson(anyObject);
         System.out.println("\nmyGsoned AniObject:\n" + serAniObject +"\n");
 
-//        System.out.println("\nmyMyGsoned AniObject:\n" + myGson.toMyJson(anyObject) +"\n");
+//       System.out.println("\nmyMyGsoned AniObject:\n" + myGson.toMyJson(anyObject) +"\n");
 
         Gson gson = new Gson();
         System.out.println("gSoned AniObject:\n" + gson.toJson(anyObject) +"\n");
@@ -44,6 +48,25 @@ public class MyGsonDemo {
 
         System.out.println("reGsoned MyGsoned null: " + gson.fromJson(new MyGson().toJson(null),AniObject.class));
         System.out.println("MyGsoned null: " + new MyGson().toJson(null));
+
+
+        Class clazz = Animal.class;
+        List <Field> fields = Arrays.asList(clazz.getDeclaredFields());
+        List <String> fieldNames = fields.stream().map(f -> f.getName()).collect(Collectors.toList());
+        int numberOfFields = fields.size();
+        Class <?> [] fieldTypes = fields.stream().map(field -> field.getType()).
+                toArray(Class<?>[]::new);
+        Constructor[] constructors = clazz.getConstructors();
+
+        System.out.println("fields:  " + numberOfFields + "pars: " + constructors[0].getParameters().length);
+
+         Constructor[] filteredConstructors = Arrays.stream(constructors).
+                filter(cons->Arrays.equals(cons.getParameterTypes(), fieldTypes)).toArray(Constructor[]::new);
+        Constructor constructor = filteredConstructors[0];
+
+        System.out.println(fieldNames);
+
+
 
     }
 }
