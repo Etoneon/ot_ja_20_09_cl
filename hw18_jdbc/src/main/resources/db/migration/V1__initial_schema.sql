@@ -1,4 +1,4 @@
-create table client
+create table user
 (
     id  bigserial not null primary key,
     name varchar(50),
