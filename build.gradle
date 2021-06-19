@@ -20,6 +20,7 @@ allprojects {
     group "eton_ot_ja_20_09_cl"
 
     repositories {
+        mavenLocal()
         mavenCentral()
     }
 
@@ -27,7 +28,8 @@ allprojects {
     dependencyManagement {
         dependencies{
         imports {
-            mavenBom("org.springframework.boot:spring-boot-dependencies:2.4.1")
+            mavenBom("org.springframework.boot:spring-boot-dependencies:2.4.5" +
+                    "")
         }
             dependency( "com.google.code.gson:gson:${Versions.gson}")
             dependency("com.google.guava:guava:${Versions.guava}")
@@ -44,6 +46,12 @@ allprojects {
             dependency("org.testcontainers:junit-jupiter:${Versions.testcontainers}")
             dependency("org.testcontainers:postgresql:${Versions.testcontainers}")
             dependency("io.netty:netty-all:${Versions.netty}")
+
+            dependency("org.webjars:sockjs-client:${Versions.sockjs}")
+            dependency("org.webjars:stomp-websocket:${Versions.stomp}")
+            dependency("org.webjars:bootstrap:${Versions.bootstrap}")
+
+            dependency("com.google.code.findbugs:jsr305:${Versions.jsr305}")
         }
     }
 

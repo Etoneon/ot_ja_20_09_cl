@@ -13,3 +13,11 @@ include 'hw20_jpql'
 include 'L20_JPQL'
 include 'hw21_cache'
 include 'hw23_webserver'
+include 'hw4W_generics'
+include 'hw16W_io'
+include 'hw28W_springDataJdbc'
+
+include 'hw32_messagingSystem:SpringBootJdbc'
+include 'hw32_messagingSystem:MessageSystem'
+
+include 'hw33_multiprocess'
